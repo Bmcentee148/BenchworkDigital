@@ -7,8 +7,8 @@
 <meta name="description" content="Benchwork Digital builds clean, fast, user-friendly websites for small businesses and local service pros on Long Island, NY.">
 
 <!-- Favicons -->
-<link rel="icon" href="favicon/favicon.ico" sizes="any">
-<link rel="icon" type="image/svg+xml" href="favicon/favicon.svg">
+<link rel="icon" href="favicon/favicon.ico" sizes="32x32">
+<link rel="icon" type="image/svg+xml" href="favicon/favicon.svg" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
 <link rel="apple-touch-icon" href="favicon/apple-touch-icon.png">
@@ -288,6 +288,12 @@
   .contact-form textarea{min-height:120px;resize:vertical}
   .contact-form button{background:var(--gold);color:var(--on-gold);border:0;border-radius:8px;padding:16px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:15px;cursor:pointer;transition:background .2s}
   .contact-form button:hover{background:var(--gold-2)}
+  .contact-form button:disabled{opacity:.6;cursor:default}
+  .hp-field{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+  .form-status{display:none;border-radius:8px;padding:14px 16px;font-size:15px;line-height:1.5}
+  .form-status.show{display:block}
+  .form-status.ok{background:rgba(63,159,214,.12);border:1px solid rgba(63,159,214,.45);color:var(--cream)}
+  .form-status.err{background:rgba(224,75,74,.12);border:1px solid rgba(224,75,74,.5);color:var(--cream)}
 
   /* Footer */
   .footer{background:var(--navy-0);border-top:1px solid var(--line);padding:clamp(44px,6vw,72px) 0 28px}
@@ -628,12 +634,15 @@
           <div class="contact-line"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><a href="mailto:brian@benchworkdigital.com" style="color:inherit">brian@benchworkdigital.com</a></div>
           <div class="contact-line"><svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Serving Long Island, NY</span></div>
         </div>
-        <form class="contact-form" onsubmit="return false">
+        <form class="contact-form" name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="contact">
+          <p class="hp-field"><label>Don’t fill this out if you’re human: <input name="bot-field"></label></p>
           <input type="text" name="name" placeholder="Your name" required>
           <input type="email" name="email" placeholder="Email address" required>
           <input type="tel" name="phone" placeholder="Phone number">
           <textarea name="message" placeholder="Tell us about your business and what you need"></textarea>
           <button type="submit">Send Message</button>
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
         </form>
       </div>
     </div>
@@ -688,6 +697,37 @@
   }
   window.addEventListener('scroll', onScroll, {passive:true});
   onScroll();
+
+  // Contact form: submit to Netlify via fetch so we can show an inline
+  // success message instead of navigating to Netlify's default page.
+  var form = document.querySelector('.contact-form');
+  if(form){
+    var status = document.getElementById('formStatus');
+    var button = form.querySelector('button[type="submit"]');
+    var buttonText = button.textContent;
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      button.disabled = true;
+      button.textContent = 'Sending…';
+      status.className = 'form-status';
+      fetch('/', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        body: new URLSearchParams(new FormData(form)).toString()
+      }).then(function(res){
+        if(!res.ok){ throw new Error('Request failed'); }
+        form.reset();
+        status.textContent = 'Thanks! Your message is on its way — we’ll get back to you, usually the same day.';
+        status.className = 'form-status ok show';
+      }).catch(function(){
+        status.textContent = 'Something went wrong sending your message. Please call 631-235-7093 or email brian@benchworkdigital.com.';
+        status.className = 'form-status err show';
+      }).then(function(){
+        button.disabled = false;
+        button.textContent = buttonText;
+      });
+    });
+  }
 </script>
 </body>
 </html>
