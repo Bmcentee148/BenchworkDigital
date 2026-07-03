@@ -243,6 +243,7 @@
   .plan-name{font-family:"Anton",sans-serif;text-transform:uppercase;color:var(--cream);font-size:26px}
   .plan-price{color:var(--gold);font-weight:700;font-size:clamp(30px,3vw,40px);margin:12px 0 4px}
   .plan-price small{display:block;color:var(--muted);font-weight:400;font-size:13.5px;margin-top:6px;letter-spacing:.02em}
+  .plan-sub{color:var(--muted);font-size:15px;line-height:1.5;margin-top:10px}
   .plan ul{list-style:none;margin:22px 0 28px;display:flex;flex-direction:column;gap:12px}
   .plan li{color:var(--cream);font-size:15px;display:flex;gap:10px;align-items:flex-start;line-height:1.4}
   .plan li svg{width:18px;height:18px;stroke:var(--gold);fill:none;stroke-width:2.4;flex:0 0 auto;margin-top:2px}
@@ -503,21 +504,12 @@
         <p class="sec-sub">Every build comes fully loaded—no upsells for the basics, no piecing it together yourself.</p>
       </div>
       <div class="incl-grid">
-        <div class="incl"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M8 21h8"/></svg><h4>Custom Design</h4><p>Designed around your business and brand—never a cookie-cutter template.</p></div>
-        <div class="incl"><svg viewBox="0 0 24 24"><rect x="7" y="3" width="10" height="18" rx="2"/><line x1="10" y1="18" x2="14" y2="18"/></svg><h4>Mobile-Responsive</h4><p>Looks sharp and works perfectly on phones, tablets, and desktops.</p></div>
-        <div class="incl"><svg viewBox="0 0 24 24"><path d="M4 4h16v12H4z"/><path d="M4 20h16"/><path d="M8 9h5M8 12h8"/></svg><h4>Lead Capture</h4><p>Contact and quote forms that turn visitors into phone calls and jobs.</p></div>
-        <div class="incl"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><h4>Photo Gallery</h4><p>Show off your work with a clean, tappable gallery of your best jobs.</p></div>
-        <div class="incl"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg><h4>SEO Foundations</h4><p>Built to be found—proper structure, speed, and Google Business setup.</p></div>
-        <div class="incl"><svg viewBox="0 0 24 24"><path d="M12 2 3 7v6c0 5 4 8 9 9 5-1 9-4 9-9V7z"/></svg><h4>Fast, Secure Hosting</h4><p>Quick-loading and secure, with an SSL certificate included.</p></div>
-      </div>
-
-      <div class="care-head">
-        <h3>Ongoing Care (Optional)</h3>
-        <p>Want us to keep it updated after launch? Two easy ways to do it.</p>
-      </div>
-      <div class="care">
-        <div class="care-card"><h4>As You Go</h4><div class="tag">Hourly</div><p>Need a change here and there? Just reach out and we'll handle it at an hourly rate—no commitment.</p></div>
-        <div class="care-card"><h4>Monthly Care</h4><div class="tag">Flat monthly fee</div><p>Ongoing updates, edits, and peace of mind for one predictable price each month.</p></div>
+        <div class="incl"><svg viewBox="0 0 24 24"><path d="M12 2 3 7v6c0 5 4 8 9 9 5-1 9-4 9-9V7z"/><path d="m9 12 2 2 4-4"/></svg><h4>Earn Trust</h4><p>Your website is often the first impression of your business. We make sure it's one that earns confidence.</p></div>
+        <div class="incl"><svg viewBox="0 0 24 24"><rect x="7" y="3" width="10" height="18" rx="2"/><line x1="10" y1="18" x2="14" y2="18"/></svg><h4>Look Great Everywhere</h4><p>Fast, mobile-friendly, and built to impress whether someone finds you on their phone or desktop.</p></div>
+        <div class="incl"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><h4>Turn Visitors Into Customers</h4><p>Clear calls-to-action and contact forms that make it easy for people to call, message, or request a quote.</p></div>
+        <div class="incl"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><h4>Showcase Your Best Work</h4><p>Highlight your projects, products, or portfolio with beautiful galleries that help customers say yes.</p></div>
+        <div class="incl"><svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg><h4>Be Easy to Find</h4><p>Built with the technical foundation and Google Business setup your business needs to be found online.</p></div>
+        <div class="incl"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="7" rx="1"/><rect x="3" y="13" width="18" height="7" rx="1"/><line x1="7" y1="7.5" x2="7.01" y2="7.5"/><line x1="7" y1="16.5" x2="7.01" y2="16.5"/></svg><h4>We Handle the Technical Stuff</h4><p>Fast, secure hosting and ongoing maintenance—so you can focus on running your business.</p></div>
       </div>
     </div>
   </section>
@@ -582,16 +574,17 @@
         </div>
         <div class="plan">
           <div class="plan-badge optional">Optional Add-On</div>
-          <div class="plan-name">Ongoing Care</div>
+          <div class="plan-name">Keep your website working</div>
+          <p class="plan-sub">You run your business. We'll keep your website running.</p>
           <div class="plan-price">$79<small>/mo &mdash; or $85/hr as-you-go</small></div>
           <ul>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Content &amp; photo updates</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Edits and small additions</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Ongoing hosting &amp; security</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Priority support</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Keep your content and photos up to date</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Need to make a change? Just let us know.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Fast, secure hosting included</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Priority support when you need it</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Cancel anytime</li>
           </ul>
-          <a href="#contact" class="btn-primary">Ask About Care</a>
+          <a href="#contact" class="btn-primary">Book a call</a>
         </div>
       </div>
       <p class="price-note">The $499 founding rate is limited to our first 10 clients&mdash;standard pricing applies after that.</p>
