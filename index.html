@@ -497,6 +497,14 @@
             <p>A polished site with services, gallery, and an easy way for boaters to get in touch.</p>
           </div>
         </a>
+        <a class="work-card" href="https://arielleveebakery.com" target="_blank" rel="noopener">
+          <div class="work-thumb"><img src="images/ArielleVeeBakery.webp" alt="ArielleVee's Bakery website" loading="lazy" decoding="async"></div>
+          <div class="work-body">
+            <span class="work-tag">Bakery</span>
+            <h3>ArielleVee's Bakery</h3>
+            <p>A warm, mobile-friendly site showing off her custom cookies, cakes, and treats—with easy quote requests for weddings, showers, and every sweet occasion.</p>
+          </div>
+        </a>
         <a class="work-card work-cta" href="#contact">
           <div class="work-thumb work-thumb-cta"><div class="cta-plus">+</div></div>
           <div class="work-body">
@@ -702,14 +710,14 @@
   // success message instead of navigating to Netlify's default page.
   var form = document.querySelector('.contact-form');
   if(form){
-    var status = document.getElementById('formStatus');
+    var statusEl = document.getElementById('formStatus');
     var button = form.querySelector('button[type="submit"]');
     var buttonText = button.textContent;
     form.addEventListener('submit', function(e){
       e.preventDefault();
       button.disabled = true;
       button.textContent = 'Sending…';
-      status.className = 'form-status';
+      statusEl.className = 'form-status';
       fetch('/', {
         method: 'POST',
         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
@@ -717,14 +725,15 @@
       }).then(function(res){
         if(!res.ok){ throw new Error('Request failed'); }
         form.reset();
-        status.textContent = 'Thanks! Your message is on its way — we’ll get back to you, usually the same day.';
-        status.className = 'form-status ok show';
+        statusEl.textContent = 'Thanks! Your message is on its way — we’ll get back to you, usually the same day.';
+        statusEl.className = 'form-status ok show';
       }).catch(function(){
-        status.textContent = 'Something went wrong sending your message. Please call 631-235-7093 or email brian@benchworkdigital.com.';
-        status.className = 'form-status err show';
+        statusEl.textContent = 'Something went wrong sending your message. Please call 631-235-7093 or email brian@benchworkdigital.com.';
+        statusEl.className = 'form-status err show';
       }).then(function(){
         button.disabled = false;
         button.textContent = buttonText;
+        statusEl.scrollIntoView({behavior: 'smooth', block: 'center'});
       });
     });
   }
