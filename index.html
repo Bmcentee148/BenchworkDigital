@@ -725,10 +725,10 @@
         <form class="contact-form" name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
           <input type="hidden" name="form-name" value="contact">
           <p class="hp-field"><label>Don’t fill this out if you’re human: <input name="bot-field"></label></p>
-          <input type="text" name="name" placeholder="Your name" required>
-          <input type="email" name="email" placeholder="Email address" required>
-          <input type="tel" name="phone" placeholder="Phone number">
-          <textarea name="message" placeholder="Tell us about your business and what you need"></textarea>
+          <input type="text" name="name" placeholder="Your name" aria-label="Your name" required>
+          <input type="email" name="email" placeholder="Email address" aria-label="Email address" required>
+          <input type="tel" name="phone" placeholder="Phone number" aria-label="Phone number">
+          <textarea name="message" placeholder="Tell us about your business and what you need" aria-label="Tell us about your business and what you need"></textarea>
           <button type="submit">Send Message</button>
           <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
         </form>
